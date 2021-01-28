@@ -1,0 +1,52 @@
+{% extends 'sample_all_the_news/base.html' %}
+
+{% block content %}
+<h1>Sample Dataset: AllTheNews</h1>
+
+<form class="form-inline my-2 my-lg-2">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search" name="search"
+        value="{{ request.GET.search }}">
+    <button class="btn btn-outline-success my-2 my-sm-2" type="submit">Search</button>
+</form>
+<p>{{ search_summary }}</p>
+
+{% for object in page_obj %}
+<div class="card mb-3">
+    <div class="card-body">
+        <h4>{{ object.title }}</h4>
+        <h5 class="text-muted">{{ object.publication }}</h5>
+        <p class="text-muted">{{ object.author }} | {{ object.date }}</p>
+        <p class="text-muted">{{ object.url }}</p>
+        <p>{{ object.content|stringformat:".300s" }}...<a href="{% url 'all_the_news_detail' object.pk %}">more</a></p>
+        </p>
+    </div>
+</div>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+<br>
+<hr>
+
+<p>By default, searches are only made across keywords and queries are lemmatized for optimal search performance. Add the
+    '--exact' flag at the end of your search to make raw searches across all fields.</p>
+<p>Sample dataset compiled using <a href="https://www.kaggle.com/snapcrack/all-the-news">all the news dataset</a> by
+    Andrew Thompson.</p>
+
+{% endblock content %}

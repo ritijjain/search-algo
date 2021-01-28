@@ -1,0 +1,10 @@
+{% extends 'sample_all_the_news/base.html' %}
+
+{% block content %}
+<p><a href="{% url 'all_the_news_dataset' %}">Back to dataset</a></p>
+
+<h2>{{ object.title }}</h1>
+<h3 class="text-muted">{{ object.publication }}</h3>
+<p class="text-muted">{{ object.author }} | {{ object.date }} | {{ object.url }}</p>
+<p>{{ object.content}}</p>
+{% endblock content %}
