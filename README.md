@@ -46,7 +46,7 @@ Exact searches using `--exact` can be used to fetch very specific entries.
 ![](/screenshots/exact_search.png)
 
 Misspelled searches should work as expected with `spell_check = True`.
-![](/screenshots/exact_misspelled_search.png)
+![](/screenshots/misspelled_search.png)
 
 Misspelled searches with the `--exact` flag will usually result in 0 results.
-![](/screenshots/misspelled_search.png)
+![](/screenshots/exact_misspelled_search.png)
