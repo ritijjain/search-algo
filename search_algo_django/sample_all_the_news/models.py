@@ -12,7 +12,7 @@ class AllTheNews(SearchAlgoModel):
     url = models.CharField(max_length=1024)
     content = models.TextField()
 
-    summarized_search_fields = ['content']
     non_summarized_search_fields = ['title', 'publication', 'author']
+    summarized_search_fields = ['content']
                     
 
