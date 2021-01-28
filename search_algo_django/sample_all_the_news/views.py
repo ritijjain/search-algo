@@ -13,8 +13,8 @@ def all_the_news_dataset(request):
 
     if 'search' in request.GET:
         start = time.time()
-        search_term = request.GET['search']
-        dataset = AllTheNews.search(search_term)
+        query = request.GET['search']
+        dataset = AllTheNews.search(query)
         end = time.time()
         context.update({'search_summary': f'Filtered to {len(dataset)} entries in {round(end-start, 3)} seconds.'})
 
