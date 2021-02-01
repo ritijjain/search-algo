@@ -1,5 +1,5 @@
 # SearchAlgo
-A lightweight python based text search for Django.
+A lightweight Python based text search framework for Django.
 
 SearchAlgo uses nltk to clean data and gensim to pickup keywords from longer text fields. This information is stored in a search_algo_condense text field in the database allowing for speedy and accurate search results.
 
